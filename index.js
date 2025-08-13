@@ -1,0 +1,39 @@
+const prompt = require('./utils/prompt')
+const add = require('./utils/add')
+const list = require('./utils/list');
+const update = require('./utils/update');
+
+
+menu()
+    function menu(){
+        console.log(`
+        === MENU ===
+    1. Adicionar Usuario
+    2. Listar Usuarios
+    3. Atualizar Usuario
+    4. Remover Usuario
+    5. Sair
+    `);
+    
+    let opcao = prompt('Escolha uma opção: ')
+    switch (opcao){
+        case '1':
+        add(); menu()
+        break
+        case '2':
+        list(); menu()
+        break
+        case '3':
+        update(); menu()
+        break
+        case '4':
+
+        break
+        case '5':
+
+        break
+        default:
+
+        break
+        }
+    }
