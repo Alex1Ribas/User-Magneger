@@ -2,15 +2,26 @@ const users = require('./users')
 const prompt = require('./prompt')
 const list = require('./list')
 
-function remove(){
+function remove() {
     list()
 
-let escolha = prompt('Selecione um ID que desja apagar: ')
-for(let i =0; i< users.length;i++)
-    if(users[i].id === escolha){
-       let confirma = prompt('Deseja realmente apagar o id' + escolha + '?(s/n)')}
-       else if (confirma.toLowerCase() === 's'){
-        users.splice(escolha, 1)
-       }
+    let escolha = prompt('Selecione um ID que deseja apagar: ')
+    let choice = parseInt(escolha)
 
+    let index = users.findIndex(user => user.id === choice)
+
+    if (index === -1) {
+        console.log('ID não encontrado.')
+        return
+    }
+
+    let confirma = prompt(`Deseja realmente apagar o ID ${choice}? (s/n): `)
+    if (confirma.toLowerCase() === 's') {
+        users.splice(index, 1)
+        console.log(`Usuário com ID ${choice} foi removido.`)
+    } else {
+        console.log('Ação cancelada.')
+    }
 }
+
+module.exports = remove

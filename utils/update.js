@@ -1,26 +1,35 @@
 const prompt = require('./prompt')
 const users = require('./users')
+const list = require('./list')
 
-function update(){
+function update() {
     list()
-    
-let opcao = prompt('Qual Usuario deseja atualizar: ')
 
-let novoNome = prompt('Nome Atualizado: ')
+    let opcao = prompt('Qual usuário deseja atualizar: ')
+    let idEscolhido = parseInt(opcao)
 
-let novoEmail= prompt('E-mail Atualizado: ')
-for (let i = 0; i < users.length; i++)
-    if (users[i].email === novoEmail){console.log('Este e-mail já esta em uso: '); return}
+    let index = users.findIndex(user => user.id === idEscolhido)
+    if (index === -1) {
+        console.log('Usuário não encontrado.')
+        return
+    }
 
-let novoNumero = prompt('Numero Atualizado: ')
+    let novoNome = prompt('Nome atualizado: ')
+    let novoEmail = prompt('E-mail atualizado: ')
 
-users[opcao].push({
-        nome : novoNome,
-        email: novoEmail,
-        numero: novoNumero
-    })
+    for (let i = 0; i < users.length; i++) {
+        if (users[i].email === novoEmail) {
+            console.log('Este e-mail já está em uso.')
+            return
+        }
+    }
 
+    let novoNumero = prompt('Número atualizado: ')
+    users[index].nome = novoNome
+    users[index].email = novoEmail
+    users[index].numero = novoNumero
 
+    console.log('Usuário atualizado com sucesso.')
 }
 
 module.exports = update
