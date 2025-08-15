@@ -1,8 +1,8 @@
-const prompt = require('./utils/prompt')
-const add = require('./utils/add')
-const list = require('./utils/list');
-const update = require('./utils/update');
-const remove = require('./utils/remove')
+const prompt = require('../utils/prompt')
+const add = require('../utils/add')
+const list = require('../utils/list');
+const update = require('../utils/update');
+const remove = require('../utils/remove')
 
 menu()
     function menu(){
